@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Contacts{{#if title}} | {{title}}{{/if}}</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+
+    <header>
+      <h1>Contact Splat</h1>
+    </header>
+
+    <nav>
+      {{#if name}}
+        <div class="welcome">
+          Welcome, {{name}}
+          <a class="button" href="/logout">Logout</a>
+        </div>
+      {{/if}}
+    </nav>
+
+    <div class="container">
+      {{{body}}}
+    </div>
+    
+  </body>
+</html>

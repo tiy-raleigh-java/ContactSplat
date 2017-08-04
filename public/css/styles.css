@@ -1,0 +1,54 @@
+/*
+  pink: C10B82
+  purple: 8C1D83
+  green: 009869
+  orange: F79F02
+  gray: CECECE
+ */
+body {
+  font-family: sans-serif;
+}
+
+header {
+  align-items: baseline;
+  justify-content: space-between;
+  background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.8)), url(/images/dots.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 1em 2em 1em 2em;
+  margin: 0;
+  vertical-align: middle;
+}
+
+h1 {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+nav {
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: #cecece;
+  padding: 0.5em;
+  border-top: 1px solid #009869;
+  border-bottom: 1px solid #009869;
+  margin-bottom: 2em;
+}
+
+.welcome {
+  font-weight: bold;
+}
+
+nav .button {
+  margin-left: 1em;
+  margin-bottom: 0;
+  background-color: #f79f02;
+}
+
+body .button {
+  background-color: #cecece;
+}
+
+body .button-primary {
+  background-color: #009869;
+}

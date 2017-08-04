@@ -9,9 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
-    "express-session": "^1.15.5"
+    "express-session": "^1.15.5",
+    "mongoose": "^4.10.8"
   }
 }
