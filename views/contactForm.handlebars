@@ -1,0 +1,31 @@
+<h2>{{#if contact}}Edit{{else}}Create{{/if}} a Contact</h2>
+
+<form action="/saveContact" method="post">
+  <label for="firstName">First Name</label>
+  <input type="text" class="u-full-width {{#err.errors.firstName}}error{{/err.errors.firstName}}" id="firstName" name="firstName" value="{{contact.firstName}}" />
+  <div class="fieldError">{{err.errors.firstName.message}}</div>
+
+  <label for="lastName">Last Name</label>
+  <input type="text" class="u-full-width {{#err.errors.lastName}}error{{/err.errors.lastName}}" id="lastName" name="lastName" value="{{contact.lastName}}" />
+  <div class="fieldError">{{err.errors.lastName.message}}</div>
+
+  <label for="company">Company</label>
+  <input type="text" class="u-full-width {{#err.errors.company}}error{{/err.errors.company}}" id="company" name="company" value="{{contact.company}}" />
+  <div class="fieldError">{{err.errors.company.message}}</div>
+
+  <label for="phone">Phone Number</label>
+  <input type="text" class="u-full-width {{#err.errors.phone}}error{{/err.errors.phone}}" id="phone" name="phone" value="{{contact.phone}}" />
+  <div class="fieldError">{{err.errors.phone.message}}</div>
+
+  <label for="emailAddress">Email Address</label>
+  <input type="text" class="u-full-width {{#err.errors.emailAddress}}error{{/err.errors.emailAddress}}" id="emailAddress" name="emailAddress" value="{{contact.emailAddress}}" />
+  <div class="fieldError">{{err.errors.emailAddress.message}}</div>
+
+  <label for="note">Notes</label>
+  <textarea class="u-full-width {{#err.errors.note}}error{{/err.errors.note}}" id="note" name="note">{{contact.note}}</textarea>
+  <div class="fieldError">{{err.errors.note.message}}</div>
+
+  <input type="hidden" name="_id" value="{{contact._id}}" />
+
+  <button class="button-primary">Save Contact</button>
+</form>

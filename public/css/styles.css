@@ -27,12 +27,23 @@ h1 {
 
 nav {
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: space-between;
   background-color: #cecece;
   padding: 0.5em;
   border-top: 1px solid #009869;
   border-bottom: 1px solid #009869;
   margin-bottom: 2em;
+}
+
+a {
+  color: #c10b82;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #c10b82;
+  text-decoration: underline;
 }
 
 .welcome {
@@ -42,7 +53,6 @@ nav {
 nav .button {
   margin-left: 1em;
   margin-bottom: 0;
-  background-color: #f79f02;
 }
 
 body .button {
@@ -51,4 +61,97 @@ body .button {
 
 body .button-primary {
   background-color: #009869;
+}
+
+body .button:hover,
+body .button:focus,
+body .button-primary:hover,
+body .button-primary:focus {
+  background-color: #f79f02 !important;
+}
+
+form .error {
+  border-color: #8c1d83;
+}
+
+.errorMessage,
+.fieldError {
+  color: #8c1d83;
+  margin-top: -0.85em;
+  margin-bottom: 1em;
+  padding-top: 0;
+}
+
+.fieldError {
+  font-size: 0.85em;
+}
+
+.searchForm {
+  display: flex;
+}
+
+.searchForm input {
+  flex-grow: 2;
+  margin: 0 1em;
+}
+
+.newContact {
+  display: flex;
+  float: right;
+  align-items: center;
+}
+
+.newContact img {
+  width: 3em;
+  height: 3em;
+  margin-right: 1em;
+}
+
+.cards {
+  margin-left: -1em;
+  margin-right: -1em;
+  padding: 0;
+}
+
+.cards ul {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.cards ul li {
+  box-sizing: border-box;
+  display: flex;
+  width: 33%;
+}
+
+.card {
+  flex-grow: 1;
+  border: 1px solid black;
+  margin: 1em;
+  padding: 0.5em 1em 0 1em;
+}
+
+.card h4 {
+  border-bottom: 1px solid black;
+  margin-bottom: 0.1em;
+}
+
+dl {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+dl dt {
+  box-sizing: border-box;
+  width: 20%;
+  margin: 0;
+  font-weight: bold;
+}
+dl dd {
+  box-sizing: border-box;
+  width: 80%;
+  text-align: right;
+  margin: 0;
 }

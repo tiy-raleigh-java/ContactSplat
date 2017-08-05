@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Contacts{{#if title}} | {{title}}{{/if}}</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
@@ -14,10 +14,13 @@
     </header>
 
     <nav>
-      {{#if name}}
+      {{#if user}}
+        <div>
+          <a class="button" href="/">My Contacts</a>
+        </div>
         <div class="welcome">
-          Welcome, {{name}}
-          <a class="button" href="/logout">Logout</a>
+          Welcome, {{user.firstName}}
+          <a class="button" href="/user/logout">Logout</a>
         </div>
       {{/if}}
     </nav>
@@ -25,6 +28,6 @@
     <div class="container">
       {{{body}}}
     </div>
-    
+
   </body>
 </html>

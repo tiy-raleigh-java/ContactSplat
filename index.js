@@ -1,11 +1,13 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 // require our routers
-const publicRoutes = require('./routes/public');
+const contactRoutes = require('./routes/contact');
+const userRoutes = require('./routes/user');
 
 // configure mongoose
 mongoose.Promise = require('bluebird');
@@ -18,20 +20,28 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('views', './views');
 app.set('view engine', 'handlebars');
 
-// configure session support middleware with express-session
-app.use(session({ secret: 'keyboard kitten', resave: false, saveUninitialized: true }));
-
 // tell express how to serve static files
 app.use(express.static('public'));
+
+app.use(
+  session({
+    secret: 'keyboard kitten',
+    resave: false,
+    saveUninitialized: true,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+  })
+);
 
 //tell express to use the bodyParser middleware to parse form data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // configure our routers
-app.use('/', publicRoutes);
+app.use('/', contactRoutes);
+app.use('/user', userRoutes);
 
 // connect to mongo using mongoose and start the app
 mongoose
-  .connect('mongodb://localhost:27017/recipes')
+  .connect('mongodb://localhost:27017/contacts')
+  // configure session support middleware with express-session
   .then(() => app.listen(3000, () => console.log('ready to roll!!')));

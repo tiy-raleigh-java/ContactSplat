@@ -1,0 +1,41 @@
+
+<!-- ye olde search form -->
+<form action="/" method="get" class="searchForm">
+  <label for="search" class="searchLabel"><h4>Search:</h4></label>
+  <input type="text" id="search" name="search" value="{{search}}" />
+  <button class="button-primary">Search</button>
+</form>
+
+<a href="/contactForm" class="newContact button">
+  <img src="/images/account-plus.png" alt="Add Contact" />
+  New Contact
+</a>
+<h2>Your Contacts</h2>
+
+<div class="cards">
+  <ul>
+    {{#contacts}}
+      <li>
+        <div class="card">
+          <h4><a href="/contactForm?id={{_id}}">{{firstName}} {{lastName}}</a></h4>
+          {{#if company}}
+            <div class="company">{{company}}</div>
+          {{/if}}
+          <dl>
+            {{#if phone}}
+              <dt>Phone</dt>
+              <dd>{{phone}}</dd>
+            {{/if}}
+            {{#if emailAddress}}
+              <dt>Email</dt>
+              <dd><a href="mailto:{{emailAddress}}" target="_blank">{{emailAddress}}</a></dd>
+            {{/if}}
+            {{#if note}}
+              {{note}}
+            {{/if}}
+          </dl>
+        </div>
+      </li>
+    {{/contacts}}
+  </ul>
+</div>
