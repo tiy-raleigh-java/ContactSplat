@@ -95,13 +95,15 @@ form .error {
   margin: 0 1em;
 }
 
-.newContact {
+.newContact,
+.deleteContact {
   display: flex;
   float: right;
   align-items: center;
 }
 
-.newContact img {
+.newContact img,
+.deleteContact img {
   width: 3em;
   height: 3em;
   margin-right: 1em;
@@ -154,4 +156,8 @@ dl dd {
   width: 80%;
   text-align: right;
   margin: 0;
+}
+
+.button.deleteContact:hover {
+  background-color: #ff5757 !important;
 }

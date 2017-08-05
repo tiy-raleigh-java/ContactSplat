@@ -1,3 +1,9 @@
+{{#if contact._id}}
+<a href="/deleteContact?id={{contact._id}}" class="deleteContact button">
+  <img src="/images/account-remove.png" alt="Delete Contact" />
+  Delete Contact
+</a>
+{{/if}}
 <h2>{{#if contact}}Edit{{else}}Create{{/if}} a Contact</h2>
 
 <form action="/saveContact" method="post">
@@ -25,7 +31,9 @@
   <textarea class="u-full-width {{#err.errors.note}}error{{/err.errors.note}}" id="note" name="note">{{contact.note}}</textarea>
   <div class="fieldError">{{err.errors.note.message}}</div>
 
-  <input type="hidden" name="_id" value="{{contact._id}}" />
-
+  {{#if contact._id}}
+    <input type="hidden" name="_id" value="{{contact._id}}" />
+  {{/if}}
+  
   <button class="button-primary">Save Contact</button>
 </form>
