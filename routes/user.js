@@ -19,7 +19,7 @@ routes.get('/login', (req, res) => {
  * @type {String}
  */
 routes.post('/login', (req, res) => {
-  User.findOne(req.body)
+  User.authenticate(req.body.emailAddress, req.body.password)
     .then(user => {
       req.session.userId = user._id.valueOf();
       res.redirect('/');
@@ -50,6 +50,8 @@ routes.get('/register', (req, res) => {
 routes.post('/register', (req, res) => {
   // validate the posted data
   let user = new User(req.body);
+  // hash the password
+  user.setPassword(req.body.password);
 
   user
     .save()
@@ -75,7 +77,7 @@ routes.post('/register', (req, res) => {
  */
 routes.get('/logout', (req, res) => {
   req.session.destroy();
-  res.local.user = undefined;
+  //res.local.user = undefined;
   res.redirect('/user/login');
 });
 

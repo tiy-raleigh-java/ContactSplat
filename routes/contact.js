@@ -13,7 +13,7 @@ const Contact = require('../models/model').Contact;
 routes.get('/', (req, res) => {
   if (!req.session.userId) return res.redirect('/user/login');
   // load the user based on their id
-  User.findOne({ _id: req.session.userId }).then(user =>
+  User.findOne({ _id: req.session.userId }).then(user => {
     // render the route!
     res.render('contacts', {
       user: user,
@@ -25,8 +25,8 @@ routes.get('/', (req, res) => {
           new RegExp(req.query.search, 'i').test(contact.company) ||
           new RegExp(req.query.search, 'i').test(contact.note)
       )
-    })
-  );
+    });
+  });
 });
 
 /**
