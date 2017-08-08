@@ -1,5 +1,6 @@
 const express = require('express');
 const routes = express.Router();
+const passport = require('../util/auth');
 
 // my models
 const User = require('../models/model').User;
@@ -10,7 +11,8 @@ const User = require('../models/model').User;
  */
 routes.get('/login', (req, res) => {
   res.render('loginForm', {
-    title: 'Login'
+    title: 'Login',
+    messages: res.locals.getMessages()
   });
 });
 
@@ -18,20 +20,28 @@ routes.get('/login', (req, res) => {
  * Validate the user.
  * @type {String}
  */
-routes.post('/login', (req, res) => {
-  User.authenticate(req.body.emailAddress, req.body.password)
-    .then(user => {
-      req.session.userId = user._id.valueOf();
-      res.redirect('/');
-    })
-    .catch(err => {
-      res.render('loginForm', {
-        title: 'Login',
-        loginFailed: true,
-        emailAddress: req.body.emailAddress
-      });
-    });
-});
+routes.post(
+  '/login',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/user/login/',
+    failureFlash: true
+  })
+);
+// routes.post('/login', (req, res) => {
+//   User.authenticate(req.body.emailAddress, req.body.password)
+//     .then(user => {
+//       req.session.userId = user._id.valueOf();
+//       res.redirect('/');
+//     })
+//     .catch(err => {
+//       res.render('loginForm', {
+//         title: 'Login',
+//         loginFailed: true,
+//         emailAddress: req.body.emailAddress
+//       });
+//     });
+// });
 
 /**
  * The registration form

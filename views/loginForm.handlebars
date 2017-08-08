@@ -2,13 +2,11 @@
 
 <p>Or, <a href="/user/register">create an account</a>.</p>
 
-{{#if loginFailed}}
-  <div class="errorMessage">Login Failed. Please try again.</div>
-{{/if}}
+{{messages.error}}
 
 <form action="/user/login" method="post">
-  <label for="emailAddress">Email Address</label>
-  <input type="text" class="u-full-width" id="emailAddress" name="emailAddress" value="{{emailAddress}}" />
+  <label for="username">Email Address</label>
+  <input type="text" class="u-full-width" id="username" name="username" value="{{emailAddress}}" />
 
   <label for="password">Password</label>
   <input type="password" class="u-full-width" id="password" name="password" />

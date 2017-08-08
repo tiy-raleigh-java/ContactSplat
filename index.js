@@ -4,10 +4,14 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const flash = require('express-flash-messages');
 
 // require our routers
 const contactRoutes = require('./routes/contact');
 const userRoutes = require('./routes/user');
+
+// require my passport configuration
+const passport = require('./util/auth');
 
 // configure mongoose
 mongoose.Promise = require('bluebird');
@@ -31,6 +35,11 @@ app.use(
     store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 );
+
+// setup the passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 //tell express to use the bodyParser middleware to parse form data
 app.use(bodyParser.json());
